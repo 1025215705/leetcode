@@ -32,19 +32,13 @@ class Solution {
     public void rotate(int[] nums, int k) {
         int n = nums.length;
         k=k%n;
-        int count =0;
-        for(int start=0; count< n; start++){
-            int current = start;
-            int pre = nums[start];
-            do{
-                int next = (current+k)%n;
-                int temp = nums[next];
-                nums[next] = pre;
-                current= next;
-                pre = temp;
-                count++;
-            }while(start !=current);
+        for(int i=0;i<k;i++){
+            int temp = nums[n-1];
+            for (int j =n-1;j>0; j--){
+                nums[j] = nums[j-1];
+            }
+            nums[0] = temp;
         }
     }
-}
+    }
 //leetcode submit region end(Prohibit modification and deletion)
