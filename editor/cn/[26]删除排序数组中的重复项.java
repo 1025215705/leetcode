@@ -46,20 +46,16 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int a =0;
-        int b=1;
-        if(nums.length ==0){
-            return 0;
-        }
-        while(b<nums.length){
-            if(nums[a]!=nums[b]){
-                nums[a+1] = nums[b];
-                a++;
-            }
-            b++;
-        }
-        return a+1;
-
+     int p = 0;
+     int q = 1;
+     while(q<nums.length){
+         if(nums[p] !=nums[q]){
+              nums[p+1] = nums[q];
+              p++;
+         }
+         q++;
+     }
+     return p+1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
