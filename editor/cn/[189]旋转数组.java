@@ -29,16 +29,54 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    //循环
     public void rotate(int[] nums, int k) {
         int n = nums.length;
         k=k%n;
-        for(int i=0;i<k;i++){
-            int temp = nums[n-1];
-            for (int j =n-1;j>0; j--){
-                nums[j] = nums[j-1];
-            }
-            nums[0] = temp;
+        int count =0;
+        for(int start=0; count< n; start++){
+            int current = start;
+            int pre = nums[start];
+            do{
+                int next = (current+k)%n;
+                int temp = nums[next];
+                nums[next] = pre;
+                current= next;
+                pre = temp;
+                count++;
+            }while(start !=current);
         }
     }
+    //翻转
+    public void rotate1(int[] nums, int k) {
+        int n = nums.length;
+        k = k%n;
+        reverse(nums, 0, n-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, n-1);
     }
+    private  void reverse (int [] nums, int start , int end ){
+        while(start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    //暴力
+    public void rotate2(int[] nums, int k) {
+
+            int n = nums.length;
+            k=k%n;
+            for(int i=0;i<k;i++){
+                int temp = nums[n-1];
+                for (int j =n-1;j>0; j--){
+                    nums[j] = nums[j-1];
+                }
+                nums[0] = temp;
+            }
+        }
+
+}
 //leetcode submit region end(Prohibit modification and deletion)
